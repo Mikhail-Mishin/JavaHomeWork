@@ -22,8 +22,9 @@ public class MainWindow extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(WIN_WIDTH, WIN_HEIGHT);
         setLocation(WIN_POS_X, WIN_POS_Y);
-        setResizable(false);
         setTitle("Game");
+        setResizable(false);
+
 
         settingsWindow = new Settings(this);
         gameMap = new GameMap();

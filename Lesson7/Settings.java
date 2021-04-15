@@ -12,6 +12,9 @@ public class Settings extends JFrame {
     private final int WIN_WIDTH = 350;
     private final int WIN_HEIGHT = 250;
 
+    private MainWindow mainWindow;
+
+
     private JRadioButton playWithHuman;
     private JRadioButton playWithAI;
 
@@ -28,7 +31,6 @@ public class Settings extends JFrame {
     private final String WIN_LENGTH_PREFIX = "Win length = ";
 
 
-    private MainWindow mainWindow;
 
     Settings(MainWindow mainWindow){
         this.mainWindow = mainWindow;
@@ -114,18 +116,20 @@ public class Settings extends JFrame {
 
         setLocation(posWindowX,posWindowY);
 
-        setLayout(new GridLayout(10,1));
-        setResizable(false);
         setTitle("Settings");
+        setResizable(false);
+
+        setLayout(new GridLayout(10,1));
+
     }
 
     private void collectUserSettings() {
-        int gameMode;
+        int modeGame;
 
         if (playWithHuman.isSelected()) {
-            gameMode = GameMap.GAME_MODE_HVH;
+            modeGame = GameMap.GAME_MODE_HVH;
         } else if (playWithAI.isSelected()) {
-            gameMode = GameMap.GAME_MODE_HVA;
+            modeGame = GameMap.GAME_MODE_HVA;
         } else {
             throw new RuntimeException("Something wrong: Cause incorrect game mode");
         }
@@ -133,7 +137,7 @@ public class Settings extends JFrame {
         int mapSize = sliderMapSizeSetup.getValue();
         int winLen = sliderWinLengthSetup.getValue();
 
-        mainWindow.startGameWithUserSettings(gameMode, mapSize, mapSize, winLen);
+        mainWindow.startGameWithUserSettings(modeGame, mapSize, mapSize, winLen);
         setVisible(false);
 
     }
